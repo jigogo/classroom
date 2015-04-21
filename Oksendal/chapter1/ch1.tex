@@ -1,0 +1,124 @@
+\documentclass[11pt,letterpaper]{article} \usepackage[latin1]{inputenc}
+\usepackage{amsmath} \usepackage{amsfonts} \usepackage{amssymb}
+\usepackage{graphicx} \usepackage[papersize={8.5in,11in}]{geometry}
+\usepackage{bm} \usepackage{float} \usepackage{setspace}
+
+
+\author{Bin Liang (binliang001@gmail.com)} \title{Exercises SDE by Oksendal,
+Chapter 1}
+
+\newcommand{\ud}{\,\mathrm{d}} \newcommand{\p}{\partial}
+
+\begin{document} \maketitle
+
+%\singlespacing
+\onehalfspacing
+
+\section*{2.1}
+\subsection*{a)} $\Rightarrow$: Suppose $X$ is a r.v., then
+$X$ is $\mathcal F$-measurable, i.e. $X^{-1}(B) \in
+  \mathcal{F}$ for $\forall B\in \mathcal B$. Choose $B_k = {a_k},\,k =
+  1,2,\ldots$ then we have $X^{-1}(a_k) \in \mathcal F$.
+
+\noindent$\Leftarrow$: Need to show $X$ is $\mathcal F$-measurable.
+Let $F_k=X^{-1}(a_k),k = 1,2,\ldots$, then $F_k\in\mathcal F$ for all $k$.
+Let $A=\left\{ a_1, a_2,\ldots \right\}$. Then for $\forall A'=\{a_i | i \in
+I \subset \mathbb Z^+\} \subset A$, we have $X^{-1}(A')=\bigcup_{i\in I}
+F_k\in \mathcal F$. Let $C=A^C=\mathcal R \ A$, then for $\forall C'\subset
+C$ we have $X^{-1}(C') = \emptyset$ since $X$ only takes value $a_k\in A$.
+Therefore for $\forall B\in \mathcal B$, 
+\begin{align}
+  X^{-1}(B) &= X^{-1}(A' \cup C'),\quad(A'\subset A,\,C'\subset C)
+  \nonumber\\
+  &=  X^{-1}(A') \cup \emptyset \nonumber\\
+  &= X^{-1}(A') \in \mathcal F 
+\end{align}
+Thus $X$ is $\mathcal F$-measurable, and $X$ is a r.v.
+
+\section*{2.3}
+Let $\left\{ \mathcal H_i \right\}_{i\in I}$ be a family of $\sigma$-algebra
+on $\Omega$. Prove that $\mathcal H = \bigcap \left\{ \mathcal H_i; i\in I
+\right\}$ is again a $\sigma$-algebra.
+
+First, we have $\emptyset \in \mathcal{H}$ since $\emptyset \in
+\mathcal{H}_i,\,\forall i\in I$.
+
+Second, suppose $F\in \mathcal{H}$. Then $F \in \mathcal{H}_i,\forall i \in
+I$, and $F^C \in \mathcal{H}_i,\forall i \in I$. Therefore we have $F^C \in
+\mathcal{H}$ also.
+
+Third, suppose $F_k\in \mathcal{H},\,k\in \mathbb{Z^+}$. Then $F_k \in
+\mathcal{H}_i,\forall i \in I, k\in \mathbb{Z^+}$, and $\bigcup_{k \in
+  \mathbb{Z^+}} F_k \in \mathcal{H}_i$, for $\forall i \in I$. Therefore
+  $\bigcup_{k \in \mathbb{Z^+}} F_k \in \mathcal{H}$.
+
+\section*{2.4}
+\subsection*{a)} \textit{Chebychev's inequality:}
+\begin{align}
+  E[|X|^p] &= \int_\Omega |X|^p \ud P \nonumber \\
+  &\geq \int_A |X|^p \ud P, \quad (A=\{\omega: |X(\omega)|\geq \lambda\})  \nonumber \\
+  &\geq \int_A \lambda ^p \ud P \nonumber \\
+  &=\lambda ^p P(|X| \geq \lambda)
+  \label{}
+\end{align}
+\subsection*{b)}
+\begin{align}
+  E\left[ e^{k|X|} \right] &= \int_\Omega e^{k|X|}\ud P \nonumber \\
+    &\geq \int_A e^{k|X|} \ud P, \quad (A=\{\omega: |X(\omega)|\geq \lambda\})  \nonumber \\
+    &\geq \int_A e^{k\lambda} \ud P \nonumber \\
+    &=e^{k\lambda} P(|X| \geq \lambda)
+  \label{}
+\end{align}
+
+\section*{2.6}
+From wikipedia:
+\textit{
+Let $(E_n)$ be a sequence of events in some probability space. The Borel-Cantelli lemma states:
+If the sum of the probabilities of the $E_n$ is finite
+\begin{equation}
+\sum_{n=1}^\infty \Pr(E_n)<\infty,
+\end{equation}
+then the probability that infinitely many of them occur is 0, that is,
+\begin{equation}
+  \Pr\left(\limsup_{n\to\infty} E_n\right) = 0.\,
+\end{equation}
+Here, "lim sup" denotes limit supremum of the sequence of events, and each
+event is a set of outcomes. That is, $\lim \sup E_n$ is the set of outcomes that
+occur infinitely many times within the infinite sequence of events $(E_n)$.
+Explicitly,
+\begin{equation}
+\limsup_{n\to\infty} E_n = \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} E_k.
+\end{equation}
+The theorem therefore asserts that if the sum of the probabilities of the
+events $E_n$ is finite, then the set of all outcomes that are "repeated"
+infinitely many times must occur with probability zero. Note that no assumption
+of independence is required.
+}  
+
+
+\noindent Proof: 
+Let $(E_n)$ be a sequence of events in some probability space and suppose that the sum of the probabilities of the En is finite. That is suppose:
+\begin{equation}
+\sum_{n=1}^\infty \Pr(E_n)<\infty.
+\end{equation}
+Now we can examine the series by examining the elements in the series. We can order the sequence such that the smaller the element is, the later it would come in the sequence. That is :-
+\begin{equation}
+\Pr(E_i) \ge \Pr(E_{i + 1})
+\end{equation}
+As the series converges, we must have that
+\begin{equation}
+\sum_{n = N} ^\infty \Pr(E_n) \rightarrow 0
+\end{equation}
+as N goes to infinity. Therefore :
+\begin{equation}
+ \inf_{N\geq 1} \sum_{n=N}^\infty \Pr(E_n) = 0. \, 
+\end{equation}
+Therefore it follows that
+\begin{align}
+& {}\qquad \Pr\left(\limsup_{n\to\infty} E_n\right) = \Pr(\text{infinitely many of the } E_n \text{ occur} ) \\[8pt]
+& = \Pr\left(\bigcap_{N=1}^\infty \bigcup_{n=N}^\infty E_n\right)
+\leq \inf_{N \geq 1} \Pr\left( \bigcup_{n=N}^\infty E_n\right) \leq \inf_{N\geq 1} \sum_{n=N}^\infty \Pr(E_n) = 0.
+\end{align}
+
+\end{document}
+
